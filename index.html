@@ -25,7 +25,35 @@
           }
       </style>
 </head>
-<body>
-    <h1 class="text-6xl">Welcome to my Project.</h1>
+<body class="w-11/12 mx-auto">
+    <!-- header section -->
+     <header class="border-b-2 border-gray-200 mt-6 mb-8">
+        <div>
+            <h1 class="text-3xl font-bold text-[#002C5C] mb-4">Job Application Tracker</h1>
+
+            <!-- count-container -->
+            <div class="grid grid-cols-3 gap-4 mb-5">
+                <!-- total -->
+                <div class="bg-white border border-[#F1F2F4] rounded-lg p-5 space-y-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <p class="text-sm font-medium text-[#323B49]">Total</p>
+                    <p id="total" class="text-2xl font-bold text-[#002C5C]">0</p>
+                </div>
+
+                <!-- interview -->
+                <div class="bg-white border border-[#F1F2F4] rounded-lg p-5 space-y-2  transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <p class="text-sm font-medium text-[#323B49]">Interview</p>
+                    <p id="interwiew" class="text-2xl font-bold text-[#10B981]">0</p>
+                </div>
+
+                <!-- rejected -->
+                <div class="bg-white border border-[#F1F2F4] rounded-lg p-5 space-y-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <p class="text-sm font-medium text-[#323B49]">Rejected</p>
+                    <p id="rejected" class="text-2xl font-bold text-[#EF4444]">0</p>
+                </div>
+            </div>
+        </div>
+     </header>
+
+     <!-- available jobs -->
 </body>
 </html>
