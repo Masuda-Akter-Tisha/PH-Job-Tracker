@@ -39,13 +39,13 @@
                     <p id="total" class="text-2xl font-bold text-[#002C5C]">0</p>
                 </div>
 
-                <!-- interview -->
+                <!-- interview-count -->
                 <div class="bg-white border border-[#F1F2F4] rounded-lg p-5 space-y-2  transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                     <p class="text-sm font-medium text-[#323B49]">Interview</p>
-                    <p id="interwiew-count" class="text-2xl font-bold text-[#10B981]">0</p>
+                    <p id="interview-count" class="text-2xl font-bold text-[#10B981]">0</p>
                 </div>
 
-                <!-- rejected -->
+                <!-- rejected-count -->
                 <div class="bg-white border border-[#F1F2F4] rounded-lg p-5 space-y-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                     <p class="text-sm font-medium text-[#323B49]">Rejected</p>
                     <p id="rejected-count" class="text-2xl font-bold text-[#EF4444]">0</p>
@@ -63,9 +63,14 @@
 
       <!-- 3 buttons section -->
        <div class="space-x-2 mb-8">
-        <button id="all-filter-btn" class="text-sm font-semibold text-white bg-[#3B82F6] py-2 px-8 rounded-sm transition-all active:scale-95">All</button>
-        <button id="interviwe-filter-btn" class="text-sm font-semibold text-[#64748B] bg-white border border-[#F1F2F4] py-2 px-8 rounded-sm transition-all active:scale-95">Interview</button>
-        <button id="rejected-filter-btn" class="text-sm font-semibold text-[#64748B] bg-white border border-[#F1F2F4] py-2 px-8 rounded-sm transition-all active:scale-95">Rejected</button>
+        <!-- all-btn -->
+        <button onclick="togglingStyle ('all-filter-btn')" id="all-filter-btn" class="text-sm font-semibold text-white bg-[#3B82F6] py-2 px-8 rounded-sm transition-all active:scale-95">All</button>
+
+        <!-- interview-btn -->
+        <button onclick="togglingStyle ('interview-filter-btn')" id="interview-filter-btn" class="text-sm font-semibold text-[#64748B] bg-white border border-[#F1F2F4] py-2 px-8 rounded-sm transition-all active:scale-95">Interview</button>
+
+        <!-- rejected-btn -->
+        <button onclick="togglingStyle ('rejected-filter-btn')" id="rejected-filter-btn" class="text-sm font-semibold text-[#64748B] bg-white border border-[#F1F2F4] py-2 px-8 rounded-sm transition-all active:scale-95">Rejected</button>
        </div>
 
        <!-- all cards section -->
