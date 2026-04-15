@@ -181,7 +181,6 @@ MainContainer.addEventListener ('click', function (event) {
         break;
        }
     }
-    
 
     // list update
     interviewList = interviewList.filter (item => item.companyName !== companyName);
