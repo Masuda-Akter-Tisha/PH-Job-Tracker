@@ -1,4 +1,3 @@
-//total,interview and rejected count function
 let total = document.getElementById ('total');
 let interviewCount = document.getElementById ('interview-count');
 let rejectedCount = document.getElementById ('rejected-count');
@@ -7,6 +6,11 @@ let interviewList = [];
 let rejectedList = [];
 let allCards = document.getElementById ('all-cards');
 
+let currentStatus = 'all-filter-btn';
+const emptyState = document.getElementById ('empty-state');
+const availableJobsUpdate = document.getElementById ('availableJobsUpdate');
+
+//total,interview and rejected count function
 function calculateCount () {
     total.innerText = allCards.children.length;
     interviewCount.innerText = interviewList.length;
@@ -15,14 +19,25 @@ function calculateCount () {
 
 calculateCount ();
 
+// available jobs update
+function jobsUpdate () {
+  if (currentStatus === 'all-filter-btn') {
+    availableJobsUpdate.innerText = allCards.children.length;
+  }
+  else if (currentStatus === 'interview-filter-btn') {
+    availableJobsUpdate.innerText = interviewList.length;
+  }
+  else if (currentStatus === 'rejected-filter-btn') {
+    availableJobsUpdate.innerText = rejectedList.length;
+  }
+}
+
+jobsUpdate ();
+
 // 3 buttons toggling
 const allFilterBtn = document.getElementById ('all-filter-btn');
 const interviewFilterBtn = document.getElementById ('interview-filter-btn');
 const rejectedFilterBtn = document.getElementById ('rejected-filter-btn');
-
-let currentStatus = 'all';
-
-const emptyState = document.getElementById ('empty-state');
 
 function togglingStyle (id) {
   allFilterBtn.classList.remove ('text-white', 'bg-[#3B82F6]');  
@@ -37,7 +52,7 @@ function togglingStyle (id) {
   selected.classList.remove ('text-[#64748B]', 'bg-white', 'border', 'border-gray-200');
   selected.classList.add ('text-white', 'bg-[#3B82F6]');
 
-   emptyState.classList.add ('hidden');
+  emptyState.classList.add ('hidden');
  
   currentStatus = id;
 
@@ -64,14 +79,15 @@ function togglingStyle (id) {
     }
     renderRejected ();
   }
-
+  
+  jobsUpdate ();
 }
 
 // main container function
 const MainContainer = document.getElementById ('main-container');
 
 MainContainer.addEventListener ('click', function (event) {
-
+    // interview function
   if (event.target.classList.contains ('interview-btn')) {
     const parentNode = event.target.parentNode.parentNode;
 
@@ -108,8 +124,9 @@ MainContainer.addEventListener ('click', function (event) {
   }
 
    calculateCount ();
+   jobsUpdate ();
   }
-
+    // rejected function
   else if (event.target.classList.contains ('rejected-btn')) {
     const parentNode = event.target.parentNode.parentNode;
 
@@ -146,6 +163,7 @@ MainContainer.addEventListener ('click', function (event) {
   }
   
    calculateCount ();
+   jobsUpdate ();
   }
 })
 
