@@ -170,17 +170,7 @@ MainContainer.addEventListener ('click', function (event) {
 
     const companyName = parentNode.querySelector ('.company-name').innerText;
 
-    // remove original cards form allCards
-    const allCardsChildren = allCards.children;
-
-    for (card of allCardsChildren) {
-      const name = card.querySelector ('.company-name').innerText;
-       
-      if (name === companyName) {
-        card.remove ();
-        break;
-       }
-    }
+    parentNode.remove ();
 
     // list update
     interviewList = interviewList.filter (item => item.companyName !== companyName);
