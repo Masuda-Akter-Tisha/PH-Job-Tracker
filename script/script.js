@@ -70,13 +70,15 @@ MainContainer.addEventListener ('click', function (event) {
   const status = parentNode.querySelector ('.status').innerText;
   const notes = parentNode.querySelector ('.notes').innerText;
   
+  parentNode.querySelector ('.status').innerText = 'interviewed';
+
   const cardInfo = {
     companyName,
     jobName,
     place,
     time,
     salary,
-    status,
+    status: 'interviewed',
     notes
   }
 
@@ -105,6 +107,8 @@ MainContainer.addEventListener ('click', function (event) {
   const salary = parentNode.querySelector ('.salary').innerText;
   const status = parentNode.querySelector ('.status').innerText;
   const notes = parentNode.querySelector ('.notes').innerText;
+
+  parentNode.querySelector ('.status').innerText = 'rejected';
   
   const cardInfo = {
     companyName,
@@ -112,7 +116,7 @@ MainContainer.addEventListener ('click', function (event) {
     place,
     time,
     salary,
-    status,
+    status:'rejected',
     notes
   }
 
