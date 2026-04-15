@@ -22,6 +22,8 @@ const rejectedFilterBtn = document.getElementById ('rejected-filter-btn');
 
 let currentStatus = 'all';
 
+const emptyState = document.getElementById ('empty-state');
+
 function togglingStyle (id) {
   allFilterBtn.classList.remove ('text-white', 'bg-[#3B82F6]');  
   interviewFilterBtn.classList.remove ('text-white', 'bg-[#3B82F6]');  
@@ -35,20 +37,31 @@ function togglingStyle (id) {
   selected.classList.remove ('text-[#64748B]', 'bg-white', 'border', 'border-gray-200');
   selected.classList.add ('text-white', 'bg-[#3B82F6]');
 
+   emptyState.classList.add ('hidden');
+ 
   currentStatus = id;
 
   if (id === 'all-filter-btn') {
     allCards.classList.remove ('hidden');
     filterSection.classList.add ('hidden');
+    if (allCards.children.length < 1) {
+      emptyState.classList.remove ('hidden');
+    }
   }
   else if (id === 'interview-filter-btn') {
     allCards.classList.add ('hidden');
     filterSection.classList.remove ('hidden');
+    if (interviewList < 1) {
+      emptyState.classList.remove ('hidden');
+    }
     renderInterview ();
   }
   else if (id === 'rejected-filter-btn') {
     allCards.classList.add ('hidden');
     filterSection.classList.remove ('hidden');
+    if (rejectedList < 1) {
+      emptyState.classList.remove ('hidden');
+    }
     renderRejected ();
   }
 
