@@ -182,8 +182,6 @@ MainContainer.addEventListener ('click', function (event) {
        }
     }
     
-    // current UI remove
-    parentNode.children ();
 
     // list update
     interviewList = interviewList.filter (item => item.companyName !== companyName);
@@ -205,7 +203,7 @@ MainContainer.addEventListener ('click', function (event) {
     ) {
       emptyState.classList.remove ('hidden');
     }
-    
+
     // count update
     calculateCount ();
     jobsUpdate ();
