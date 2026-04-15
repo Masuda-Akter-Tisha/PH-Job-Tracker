@@ -51,9 +51,8 @@ function togglingStyle (id) {
   const selected = document.getElementById (id);
   selected.classList.remove ('text-[#64748B]', 'bg-white', 'border', 'border-gray-200');
   selected.classList.add ('text-white', 'bg-[#3B82F6]');
-
-  emptyState.classList.add ('hidden');
  
+  emptyState.classList.add ('hidden');
   currentStatus = id;
 
   if (id === 'all-filter-btn') {
@@ -61,22 +60,22 @@ function togglingStyle (id) {
     filterSection.classList.add ('hidden');
     if (allCards.children.length < 1) {
       emptyState.classList.remove ('hidden');
-    }
+    } 
   }
   else if (id === 'interview-filter-btn') {
     allCards.classList.add ('hidden');
     filterSection.classList.remove ('hidden');
     if (interviewList < 1) {
-      emptyState.classList.remove ('hidden');
-    }
+        emptyState.classList.remove ('hidden');
+      }
     renderInterview ();
   }
   else if (id === 'rejected-filter-btn') {
     allCards.classList.add ('hidden');
     filterSection.classList.remove ('hidden');
-    if (rejectedList < 1) {
-      emptyState.classList.remove ('hidden');
-    }
+     if (rejectedList < 1) {
+        emptyState.classList.remove ('hidden');
+      }
     renderRejected ();
   }
   
@@ -165,6 +164,52 @@ MainContainer.addEventListener ('click', function (event) {
    calculateCount ();
    jobsUpdate ();
   }
+  // delete function
+  else if (event.target.classList.contains ('delete-btn')) {
+    const parentNode = event.target.parentNode.parentNode;
+
+    const companyName = parentNode.querySelector ('.company-name').innerText;
+
+    // remove original cards form allCards
+    const allCardsChildren = allCards.children;
+
+    for (card of allCardsChildren) {
+      const name = card.querySelector ('.company-name').innerText;
+       
+      if (name === companyName) {
+        card.remove ();
+        break;
+       }
+    }
+    
+    // current UI remove
+    parentNode.children ();
+
+    // list update
+    interviewList = interviewList.filter (item => item.companyName !== companyName);
+    rejectedList = rejectedList.filter (item => item.companyName !== companyName);
+
+    // re-render 
+    if (currentStatus === 'interview-filter-btn') {
+      renderInterview ();
+    }
+    else if (currentStatus === 'rejected-filter-btn') {
+      renderRejected ();
+    }
+
+    // empty state
+    if (
+      (currentStatus === 'all-filter-btn' && allCards.children.length < 1) ||
+      (currentStatus === 'interview-filter-btn' && interviewList.length < 1) ||
+      (currentStatus === 'rejected-filter-btn' && rejectedList.length < 1)
+    ) {
+      emptyState.classList.remove ('hidden');
+    }
+    
+    // count update
+    calculateCount ();
+    jobsUpdate ();
+  }
 })
 
 const filterSection = document.getElementById ('filter-section');
@@ -207,7 +252,7 @@ function renderInterview () {
                 <!-- main-part-2 -->
                 <div>
                     <button class="delete-btn w-10 h-10 border border-gray-200 rounded-full transition-all active:scale-95">
-                        <i class="fa-solid fa-trash text-red-400"></i>
+                        <i class="fa-solid fa-trash text-red-400 pointer-events-none"></i>
                     </button>
                 </div>
      `
@@ -253,7 +298,7 @@ function renderRejected () {
                 <!-- main-part-2 -->
                 <div>
                     <button class="delete-btn w-10 h-10 border border-gray-200 rounded-full transition-all active:scale-95">
-                        <i class="fa-solid fa-trash text-red-400"></i>
+                        <i class="fa-solid fa-trash text-red-400 pointer-events-none"></i>
                     </button>
                 </div>
      `
