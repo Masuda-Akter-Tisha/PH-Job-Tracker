@@ -20,6 +20,8 @@ const allFilterBtn = document.getElementById ('all-filter-btn');
 const interviewFilterBtn = document.getElementById ('interview-filter-btn');
 const rejectedFilterBtn = document.getElementById ('rejected-filter-btn');
 
+let currentStatus = 'all';
+
 function togglingStyle (id) {
   allFilterBtn.classList.remove ('text-white', 'bg-[#3B82F6]');  
   interviewFilterBtn.classList.remove ('text-white', 'bg-[#3B82F6]');  
@@ -33,9 +35,26 @@ function togglingStyle (id) {
   selected.classList.remove ('text-[#64748B]', 'bg-white', 'border', 'border-gray-200');
   selected.classList.add ('text-white', 'bg-[#3B82F6]');
 
+  currentStatus = id;
+
+  if (id === 'all-filter-btn') {
+    allCards.classList.remove ('hidden');
+    filterSection.classList.add ('hidden');
+  }
+  else if (id === 'interview-filter-btn') {
+    allCards.classList.add ('hidden');
+    filterSection.classList.remove ('hidden');
+    renderInterview ();
+  }
+  else if (id === 'rejected-filter-btn') {
+    allCards.classList.add ('hidden');
+    filterSection.classList.remove ('hidden');
+    renderRejected ();
+  }
+
 }
 
-// event delegation
+// main container function
 const MainContainer = document.getElementById ('main-container');
 
 MainContainer.addEventListener ('click', function (event) {
@@ -66,9 +85,14 @@ MainContainer.addEventListener ('click', function (event) {
    if (!jobExist) {
     interviewList.push (cardInfo);
    }
+
+   rejectedList = rejectedList.filter (item => item.companyName !== cardInfo.companyName);
   
+  if (currentStatus === 'rejected-filter-btn') {
+    renderRejected ();
+  }
+
    calculateCount ();
-   renderInterview ();
   }
 
   else if (event.target.classList.contains ('rejected-btn')) {
@@ -97,9 +121,14 @@ MainContainer.addEventListener ('click', function (event) {
    if (!jobExist) {
     rejectedList.push (cardInfo);
    }
+
+    interviewList = interviewList.filter (item => item.companyName !== cardInfo.companyName);
+    
+  if (currentStatus === 'interview-filter-btn') {
+    renderInterview ();
+  }
   
    calculateCount ();
-   renderRejected ();
   }
 })
 
