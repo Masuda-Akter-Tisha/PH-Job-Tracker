@@ -9,7 +9,7 @@
        iv. `querySelectorAll()`: querySelectorAll() is used to find all matching elements using a CSS selector.
 
 ### 2.How do you create and insert a new element into the DOM?
-**Ans:** To create and append an element, first select its parent element, then create a new child element, set its innerText or innerHTML inside it,</br> And finally append the child element to the parent element.
+**Ans:** To create and append an element, first select its parent element, then create a new child element, set its innerText or innerHTML inside it,And finally append the child element to the parent element.
 
 ### 3.What is Event Bubbling? And how does it work?
 **Ans:** Event bubbling is a behavior of the JavaScript DOM event system in which an event moves from the child element up to the parent element.
