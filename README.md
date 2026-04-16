@@ -1,4 +1,4 @@
-###Assignment 4 Questions Answers :
+### Assignment 4 Questions Answers :
 
 ### 1.What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
  **Ans:**  getElementById, getElementsByClassName, querySelector, and querySelectorAll are JavaScript DOM methods that are used to find and select elements from the HTML DOM.</br>
