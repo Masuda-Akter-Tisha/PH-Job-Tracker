@@ -65,7 +65,7 @@ function togglingStyle (id) {
   else if (id === 'interview-filter-btn') {
     allCards.classList.add ('hidden');
     filterSection.classList.remove ('hidden');
-    if (interviewList < 1) {
+    if (interviewList.length < 1) {
         emptyState.classList.remove ('hidden');
       }
     renderInterview ();
@@ -73,7 +73,7 @@ function togglingStyle (id) {
   else if (id === 'rejected-filter-btn') {
     allCards.classList.add ('hidden');
     filterSection.classList.remove ('hidden');
-     if (rejectedList < 1) {
+     if (rejectedList.length < 1) {
         emptyState.classList.remove ('hidden');
       }
     renderRejected ();
